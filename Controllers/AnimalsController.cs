@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using CretaceousPark.Models;
+using Microsoft.EntityFrameworkCore; //This is in order to use EntityState.
 
 namespace CretaceousPark.Controllers
 {
@@ -35,6 +36,15 @@ namespace CretaceousPark.Controllers
     public ActionResult<Animal> Get(int id)
     {
         return _db.Animals.FirstOrDefault(entry => entry.AnimalId == id);
+    }
+
+    // PUT api/animals/5 - PUT changes existing information
+    [HttpPut("{id}")]
+    public void Put(int id, [FromBody] Animal animal)
+    {
+        animal.AnimalId = id;
+        _db.Entry(animal).State = EntityState.Modified;
+        _db.SaveChanges();
     }
   }
 }
