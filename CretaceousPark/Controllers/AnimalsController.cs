@@ -18,7 +18,8 @@ namespace CretaceousPark.Controllers
     }
     
     // GET api/animals
-    //Modified to be able to search in PostMan per query (species or gender).
+    // THis method now allows a user to enter query parameters for species, gender and name
+    // The 3 of these are properties of each Animal instance (ex: api/animals?gender=female )
     [HttpGet]
     public ActionResult<IEnumerable<Animal>> Get(string species, string gender, string name)
     {
