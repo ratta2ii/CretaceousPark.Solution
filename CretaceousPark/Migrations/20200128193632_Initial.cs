@@ -22,6 +22,18 @@ namespace CretaceousPark.Migrations
                 {
                     table.PrimaryKey("PK_Animals", x => x.AnimalId);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Animals",
+                columns: new[] { "AnimalId", "Age", "Gender", "Name", "Species" },
+                values: new object[,]
+                {
+                    { 1, 7, "Female", "Matilda", "Woolly Mammoth" },
+                    { 2, 10, "Female", "Rexie", "Dinosaur" },
+                    { 3, 2, "Female", "Matilda", "Dinosaur" },
+                    { 4, 4, "Male", "Pip", "Shark" },
+                    { 5, 22, "Male", "Bartholomew", "Dinosaur" }
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
